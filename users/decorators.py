@@ -47,11 +47,11 @@ def player_required(func):
                 else:
                     return func(request, *args, **kwargs)
 
-        elif request.user.is_staff or request.user.is_superuser:
+        elif request.user:
             assignmentId = f"{request.user.username}__{uuid.uuid4().hex}"[:31]
             hitId = 'admin'
-            workerId = 'admin'
-            return redirect(f"{request.path_info}?assignmentId={assignmentId}&hitId={hitId}&workerId={workerId}&turkSubmitTo=")
+            workerId = request.user.username
+            return redirect(f"{request.path_info}?assignmentId={assignmentId}&hitId={hitId}&workerId={workerId}&turkSubmitTo=https://cam2-crowdsourcing.herokuapp.com")
         else:
             return func(request, *args, previewMode=True, **kwargs)
     return wrapper

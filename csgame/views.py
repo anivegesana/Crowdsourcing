@@ -40,3 +40,6 @@ def phase01b(request):
 
 def stop(request):
     return render(request, 'stop.html')
+
+def adminSubmit(request):
+    return HttpResponse("Good job. Want a cookie?")

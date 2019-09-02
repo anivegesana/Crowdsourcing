@@ -29,7 +29,7 @@ urlpatterns = [
 
     path('accounts/', include('django.contrib.auth.urls')),
     # path('accounts/signup/', home.SignUpView.as_view(), name='signup'),
-    # path('accounts/signup/player/', player.PlayerSignUpView.as_view(), name='player_signup'),
+    path('accounts/signup/player/', player.PlayerSignUpView.as_view(), name='player_signup'),
     # path('accounts/signup/requester/', requester.RequesterSignUpView.as_view(), name='requester_signup'),
     # path('uploads/', upload.ZipfileCreateView.as_view(), name='test_upload')
 
@@ -44,6 +44,8 @@ urlpatterns = [
     url(r'^phase01b/$', gamep.phase01b, name='phase01b'),
     url(r'^phase02/$', gamep.phase02, name='phase02'),
     url(r'^phase03/$', gamep.phase03, name='phase03'),
+
+    url(r'^mturk/externalSubmit/$', views.adminSubmit, name='adminSubmit'),
 ]
 
 handler404 = 'csgame.views.handler404'
