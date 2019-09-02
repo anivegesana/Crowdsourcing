@@ -47,7 +47,7 @@ def player_required(func):
                 else:
                     return func(request, *args, **kwargs)
 
-        elif request.user:
+        elif not request.user.is_anonymous:
             assignmentId = f"{request.user.username}__{uuid.uuid4().hex}"[:31]
             hitId = 'admin'
             workerId = request.user.username
