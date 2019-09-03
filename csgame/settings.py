@@ -96,7 +96,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'cam2-crowdsourcing.herokuapp.com',
-    'cam2-ece264.herokuapp.com',
+    'cam2-crowdsourcing-local.herokuapp.com',
 ]
 
 
