@@ -198,9 +198,12 @@ def phase02(request, previewMode=False):
         print("The user should not process the homepage")
         information= "Thank you for your support and please wait until we finish process and release the next phase"
     return render(request, 'over.html', {'info' : information})
+
 # View for phase3
 @player_required
 def phase03(request, previewMode=False):
+    if not Attribute.objects.exists():
+        return over(request, 'phase03')
     # Update count
     if request.method == 'POST':
         words = request.POST.getlist('data[]')

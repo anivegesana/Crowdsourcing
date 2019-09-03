@@ -52,15 +52,14 @@
             <a href="{% url 'about' %}" class="nav-link">About</a>
         </div>
 
-        {% if "about" not in request.path and not PRODUCTION %}
         <div class="dropdown ml-2">
             <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
                         Phase
                     </button>
             <ul class="dropdown-menu" style="color: #2C2C2C">
-              <li><a class="dropdown-item" href="{% url 'phase01a' %}" style="color: black">Phase01a: Q&A Generations</a></li>
-              <li><a class="dropdown-item" href="{% url 'phase01b' %}" style="color: black">Phase01b: Q&A Validation</a></li>
-              <li><a class="dropdown-item" href="{% url 'phase03' %}" style="color: black">Phase03: Yes or No?</a></li>
+              <li><a class="dropdown-item" href="{% url 'phase01a' %}" style="color: black">Step 1: Q&amp;A Generations</a></li>
+              <li><a class="dropdown-item" href="{% url 'phase01b' %}" style="color: black">Step 2: Q&amp;A Validation</a></li>
+              <li><a class="dropdown-item" href="{% url 'phase03' %}" style="color: black">Step 3: Yes or No?</a></li>
             </ul>
         </div>
         <div class="dropdown ml-2 flex-row justify-content-between ml-auto" style="padding-right: 200px">
@@ -68,10 +67,9 @@
                 <div class="dropdown">
                         {% if user.is_authenticated %}
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Player
+                            Player {{ request.user }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                             <a class="dropdown-item" href="{% url 'logout' %}" style="color: red">Logout</a>
                         </div>
                     {% else %}
@@ -80,7 +78,6 @@
                 </div>
             </ul>
         </div>
-        {% endif %}
     </nav>
 </div>
 
