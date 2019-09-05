@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.urls import include, path
 from django.contrib import admin
-from users.views import player, home, gamep
+from users.views import player, home, gamep, images
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
@@ -44,6 +44,10 @@ urlpatterns = [
     url(r'^phase01b/$', gamep.phase01b, name='phase01b'),
     url(r'^phase02/$', gamep.phase02, name='phase02'),
     url(r'^phase03/$', gamep.phase03, name='phase03'),
+
+    url(r'^images/$', images.main, name='images'),
+    url(r'^images/pane$', images.pane, name='images2'),
+    url(r'^images/answers$', images.answers, name='images3'),
 
     url(r'^mturk/externalSubmit/$', views.adminSubmit, name='adminSubmit'),
 ]

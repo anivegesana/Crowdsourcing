@@ -44,7 +44,7 @@ def rephrase_old(q, a):
         a = a[:len(a)-len(fragment)-1]
     if getFirstIndex(['as', 'has', 'is'], a.split()):
         return ' '.join(['With most', IMG_PROMPT, a]) + "."
-    elif q_words[0] in PREPOSITIONS or ' '.join(q_words[:2]) in TWO_WORD_PREPOSITIONS:
+    elif q_words and (q_words[0] in PREPOSITIONS or ' '.join(q_words[:2]) in TWO_WORD_PREPOSITIONS):
         return ' '.join(['With most', IMG_PROMPT, a, is_are, fragment]) + "."
     else:
         return ' '.join(['With most', IMG_PROMPT, fragment, is_are, a]) + "."
