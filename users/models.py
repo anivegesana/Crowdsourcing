@@ -222,3 +222,6 @@ class TextInstruction(models.Model):
     instruction = models.TextField(blank=False,null=False,unique=False)
     def __str__(self):
         return self.phase
+
+class ExpertAnswer(models.Model):
+    answer=models.TextField()

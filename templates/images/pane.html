@@ -10,11 +10,12 @@
 
 .flex-container > div {
   background-color: #f1f1f1;
-  margin: 5px;
+  margin: 2px;
   text-align: center;
   /*width: 8.8%;*/
   /*width: 74px;*/
-  width: 72px;
+  width: 83.2px;
+  width: 81.2px;
 }
 
 .flex-container > div > img {
@@ -24,11 +25,19 @@
 </style>
 </head>
 <body>
-
+{% if page < maxPage %}
+<p style="text-align: center; color: white">Page {{ page|default:"0"|add:"1" }} of {{ maxPage }}</p>
 <div class="flex-container">
   {% for img in images %}
     <div><img src={{ img }}></div>
   {% endfor %}
 </div>
+{% elif page == maxPage %}
+<h1 style="text-align: center; color: white">Thank you very much for your help.</h1>
+<p style="color: white">Your submission has been successfully recorded. You can close out of this tab now.</p>
+{% else %}
+<h1 style="text-align: center; color: white">We said you were done.</h1>
+<p style="color: white">Enough is enough.</p>
+{% endif %}
 </body>
 </html>

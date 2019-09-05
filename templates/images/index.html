@@ -1,64 +1,64 @@
-<!--<html>
-<head>
-  <title>Frames Test</title>
-  <style>
-   .menu {
-      float:left;
-      width:20%;
-      max-width:20%;
-      height:100%;
-      border:0;
-    }
-    .mainContent {
-      float:left;
-      width:80%;
-      height:100%;
-      border:0;
-    }
-  </style>
-</head>
-<body>
-  <iframe class="mainContent" src="./pane.html"></iframe>
-  <iframe class="menu" src="./answers.html"></iframe>
-</body>
-</html>-->
 {% extends 'base.html' %}
 {% block css %}
 <style>
- .menu {
-    float:left;
-    width:20%;
-    max-width:20%;
-    height:100%;
-    border:0;
-  }
-  .mainContent {
-    float:left;
-    width:80%;
-    height:100%;
-    border:0;
-  }
-</style>
-<style>
+.menu {
+  float:left;
+  width:20%;
+  max-width:20%;
+  height:100%;
+  border:0;
+  padding-left: 8px;
+}
+.mainContent {
+  float:left;
+  width:80%;
+  height:100%;
+  border:0;
+}
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
   background-color: rgb(101, 116, 118);
 }
-
 .flex-container > div {
   background-color: #f1f1f1;
-  margin: 10px;
+  margin: 5px;
   text-align: center;
+  /*width: 8.8%;*/
+  /*width: 74px;*/
+  width: 72px;
 }
-.flex-container > div >img {
-  height: 300px;
+.flex-container > div > img {
+  padding: 2px;
+  width: calc( 100% - 4px );
 }
 </style>
 {% endblock %}
 {% block content %}
 <div class="container" style="padding-bottom:100px">
-<iframe class="mainContent" src="pane"></iframe>
-<iframe class="menu" src="answers"></iframe>
+<iframe class="mainContent" name="paneFrame" src="pane"></iframe>
+<div class="menu">
+  <div style="width: 100% margin: 0px; background-color: rgb(101, 116, 118);">
+    <form target="paneFrame" method="POST" action="pane" id="pane">
+      {% csrf_token %}
+      <p style="margin-top:2px;color: white;">On the left, there are many images. Please write a paragraph describing the baises in the image dataset.</p>
+      <textarea style="overflow-y: scroll; width: 98%; height: 50%" name="biases" id="biases"></textarea>
+      <input type="hidden" id="page" name="page" value="1">
+      <button type="submit">More Images</button>
+    </form>
+    <script>
+    //$('#biases').change(function(){
+    //   $('#submit').removeAttr("disabled");
+    //});
+    var imgIndex = 1;
+    $("#pane").submit(function( event ) {
+       $('#page').val(imgIndex++);
+       //$('#submit').attr("disabled", "disabled");
+       return true;
+    });
+    </script>
+  </div>
+</div>
 </div>
 {% endblock %}
