@@ -45,6 +45,7 @@ urlpatterns = [
     url(r'^phase02/$', gamep.phase02, name='phase02'),
     url(r'^phase03/$', gamep.phase03, name='phase03'),
 
+    url(r'^images/$', images.realmain, name='images3'),
     url(r'^images/(.+)/$', images.main, name='images'),
     url(r'^images/(.+)/pane$', images.pane, name='images2'),
 

@@ -224,4 +224,5 @@ class TextInstruction(models.Model):
         return self.phase
 
 class ExpertAnswer(models.Model):
+    object=models.CharField(max_length=20)
     answer=models.TextField()
