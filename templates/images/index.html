@@ -42,7 +42,7 @@
   <div style="width: 100% margin: 0px; background-color: rgb(101, 116, 118);">
     <form method="POST" action="{% if maxPage <= 1 %}../{{ next }}/?next={{later}}{% else %}pane{% endif %}" {% if maxPage > 1 %}target="paneFrame"{% endif %} id="pane">
       {% csrf_token %}
-      <p style="margin-top:2px;color: white;">On the left, there are many images. Please write a paragraph describing the baises in the image dataset.</p>
+      <p style="margin-top:2px;color: white;">On the left, there are many images. Please write a paragraph describing the biases in the image dataset.</p>
       <textarea style="overflow-y: scroll; width: 98%; height: 50%" name="biases" id="biases" {% if last == 'over' %}disabled{% endif %}></textarea>
       <input type="hidden" id="page" name="page" value="1">
       <input type="hidden" id="last" name="{{ last }}" value="1">
