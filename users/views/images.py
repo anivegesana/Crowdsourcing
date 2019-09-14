@@ -13,8 +13,9 @@ def realmain(request):
 def main(request, objname):
     if request.method == 'POST':
         biases = request.POST['biases']
+        last = request.POST['last']
         # record biases
-        ExpertAnswer.objects.create(answer=biases, object=objname)
+        ExpertAnswer.objects.create(answer=biases, object=last)
     if objname == 'over':
         return render(request, 'images/index.html', {'next': 'over', 'later': 'over', 'maxPage': 0, 'last': 'over'})
     imgs = images(objname)

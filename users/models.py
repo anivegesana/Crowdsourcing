@@ -226,3 +226,5 @@ class TextInstruction(models.Model):
 class ExpertAnswer(models.Model):
     object=models.CharField(max_length=20)
     answer=models.TextField()
+    def __str__(self):
+        return f"{object}: {answer}"
