@@ -5,10 +5,10 @@ from functools import lru_cache
 from math import ceil
 from ..models import ExpertAnswer
 
-perPage = 600
+perPage = 1300
 
 def realmain(request):
-    return redirect('bird/?next=rooster,falcon')
+    return redirect('car/?next=over')
 
 def main(request, objname):
     if request.method == 'POST':
